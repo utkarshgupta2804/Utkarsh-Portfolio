@@ -40,7 +40,7 @@ export async function GET() {
       },
     ],
     totalExperience: "1+ year",
-    companiesWorkedWith: 3,
+    companiesWorkedWith: 1,
     studentsTrained: "200+",
     usersImpacted: "4,000+",
   })

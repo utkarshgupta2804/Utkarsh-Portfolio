@@ -68,8 +68,6 @@ export async function GET() {
       "State-level sports achiever",
       "National championship participant",
     ],
-    summary:
-      "A well-rounded individual with achievements spanning technical innovation, project delivery, teaching, and sports. Demonstrated excellence in both academic and extracurricular activities with national-level recognition in chess and roller hockey.",
     uniqueStrengths: [
       "Competitive mindset from sports translated to technical excellence",
       "Leadership through training 200+ students",

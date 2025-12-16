@@ -485,9 +485,10 @@ function hello() {
                   <p className="text-gray-300 font-semibold">Welcome 👋</p>
 
                   <p>
-                    This is my <span className="text-gray-300 font-medium">Postman-style portfolio</span>, designed to
-                    demonstrate my backend, API design, and frontend interaction skills in a familiar developer
-                    interface.
+                    This is my{" "}
+                    <span className="text-gray-300 font-medium">Postman-style portfolio</span>,
+                    designed to demonstrate my backend, API design, and frontend interaction
+                    skills in a familiar developer interface.
                   </p>
 
                   <p>
@@ -498,11 +499,28 @@ function hello() {
                   <ul className="list-disc pl-5 space-y-2">
                     <li>Select APIs directly from the left collections panel</li>
                     <li>Or manually type endpoints in the request URL bar</li>
+                    <li>
+                      The <span className="text-gray-300 font-medium">save icon</span> opens my
+                      resume
+                    </li>
                   </ul>
+
+                  <div className="border-t border-[#2c2c2c] pt-3 space-y-2">
+                    <p>
+                      In the <span className="text-gray-300 font-medium">Response</span> section,
+                      you can access my{" "}
+                      <span className="text-gray-300 font-medium">X (Twitter)</span> and{" "}
+                      <span className="text-gray-300 font-medium">Medium</span> profiles.
+                    </p>
+
+                    <p>
+                      Clicking on my{" "}
+                      <span className="text-gray-300 font-medium">profile photo</span> will
+                      directly open your email client to contact me.
+                    </p>
+                  </div>
                 </div>
               )}
-
-
               {/* ================= PROJECTS ================= */}
               {sidePanel === "projects" && (
                 <div className="space-y-4">
@@ -547,6 +565,59 @@ function hello() {
                             </svg>
                             Featured
                           </span>
+                        </div>
+                      </a>
+                      <a
+                        href="https://github.com/utkarshgupta2804/omegle-clone"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-3 py-2.5 rounded text-sm bg-[#252525] hover:bg-[#2c2c2c] border border-[#2c2c2c] hover:border-[#3a3a3a] transition-all group"
+                      >
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <div className="font-medium text-gray-200 group-hover:text-[#ff6c37] transition-colors">
+                              Omegle Clone
+                            </div>
+                            <div className="text-xs text-gray-500 mt-1">
+                              Real-time anonymous chat application with queue-based user matching
+                            </div>
+                          </div>
+                          <svg
+                            className="w-4 h-4 text-gray-500 group-hover:text-gray-400 flex-shrink-0 ml-2"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034z" />
+                          </svg>
+                        </div>
+
+                        <div className="flex items-center gap-3 mt-2 text-xs text-gray-600 flex-wrap">
+                          <span className="flex items-center gap-1">
+                            <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                            TypeScript
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                            WebRTC
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                            Socket.IO
+                          </span>
+                        </div>
+
+                        <div className="mt-2 flex items-center gap-4 text-xs">
+                          <a
+                            href="https://omegle-clone-nine-silk.vercel.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#ff6c37] hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Live Demo →
+                          </a>
+                          <span className="text-gray-600">|</span>
+                          <span className="text-gray-500">Vercel Deployment</span>
                         </div>
                       </a>
 
@@ -717,8 +788,6 @@ function hello() {
                     {tab === "Headers" && " (9)"}
                   </button>
                 ))}
-                <div className="flex-1"></div>
-                <button className="text-sm text-[#4a9eff] hover:text-[#6ab0ff] px-3">Cookies</button>
               </div>
             </div>
 

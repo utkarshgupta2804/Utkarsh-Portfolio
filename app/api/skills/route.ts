@@ -23,49 +23,7 @@ export async function GET() {
       os: ["Ubuntu", "CentOS"],
       virtualization: ["Vagrant"],
       versionControl: ["Git"],
+      SystemDesign: ["Excalidraw"],
     },
-    expertise: {
-      frontend: {
-        level: "Advanced",
-        skills: [
-          "Building responsive UIs with React.js and Next.js",
-          "State management and optimization",
-          "Modern CSS and Tailwind CSS",
-          "Mobile-first development",
-        ],
-      },
-      backend: {
-        level: "Advanced",
-        skills: [
-          "RESTful API development",
-          "Real-time applications with WebSockets",
-          "Database design and optimization",
-          "Authentication and authorization",
-          "Microservices architecture",
-        ],
-      },
-      devOps: {
-        level: "Intermediate",
-        skills: [
-          "AWS deployment and management",
-          "Docker containerization",
-          "CI/CD pipelines",
-          "Server configuration and management",
-        ],
-      },
-      systemDesign: {
-        level: "Intermediate",
-        skills: ["Load balancing", "Scalable architecture design", "Real-time systems", "Performance optimization"],
-      },
-    },
-    currentlyLearning: ["Advanced system design patterns", "Kubernetes", "GraphQL", "Microservices architecture"],
-    strengths: [
-      "Full-stack development",
-      "Real-time applications",
-      "Scalable system design",
-      "Performance optimization",
-      "Quick learner",
-      "Team collaboration",
-    ],
   })
 }

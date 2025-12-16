@@ -49,63 +49,7 @@ export async function GET() {
           features: "Real-time health checks, graceful shutdown",
         },
       },
-      {
-        name: "MemeBuzz App",
-        date: "2024",
-        description: "Social platform for meme sharing with 1,000+ active users",
-        features: [
-          "Enhanced backend with Express.js for improved performance",
-          "Built engaging user experience driving high user engagement",
-        ],
-        technologies: ["Express.js", "Node.js", "MongoDB", "React.js"],
-        highlights: {
-          users: "1,000+ active users",
-          type: "Social media platform",
-        },
-      },
-      {
-        name: "Compconnect Project",
-        date: "2024",
-        description: "Modern JavaScript application for connecting students",
-        features: [
-          "Innovated using modern JavaScript frameworks",
-          "Collaborated with developers to meet user requirements",
-        ],
-        technologies: ["JavaScript", "React.js", "Node.js"],
-        highlights: {
-          collaboration: "Team project",
-          focus: "User requirements",
-        },
-      },
-      {
-        name: "Eletrothon7.0 Website",
-        date: "2024",
-        description: "Event registration platform for college hackathon",
-        features: [
-          "Built Next.js stack web application",
-          "Engaged 3,000+ users",
-          "Facilitated 500+ team registrations",
-        ],
-        technologies: ["Next.js", "React.js", "Node.js"],
-        highlights: {
-          users: "3,000+ engaged users",
-          registrations: "500+ teams",
-        },
-      },
-      {
-        name: "Prithvi Travels Admin Panel",
-        date: "2025",
-        description: "Admin dashboard for travel company operations",
-        features: ["Improved operational efficiency by 30%", "Reduced page load time by 40%", "Integrated 12+ APIs"],
-        technologies: ["Next.js", "Firebase", "React.js"],
-        highlights: {
-          efficiency: "30% improvement",
-          performance: "40% faster load times",
-          integrations: "12+ APIs",
-        },
-      },
     ],
-    totalProjects: 7,
     technologies: [
       "Next.js",
       "React.js",
@@ -118,6 +62,5 @@ export async function GET() {
       "Firebase",
       "TypeScript",
     ],
-    focus: ["Real-time applications", "Scalable systems", "Full-stack development", "Cloud deployment"],
   })
 }
