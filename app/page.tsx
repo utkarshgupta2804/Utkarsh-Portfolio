@@ -60,6 +60,8 @@ export default function PortfolioPostman() {
   const [sidePanel, setSidePanel] = useState<SidePanel>("collections")
   const [docFile, setDocFile] = useState<File | null>(null)
 
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+
   const onMouseDown = () => setIsDragging(true)
 
   const onMouseMove = (e: MouseEvent) => {
@@ -296,23 +298,29 @@ function hello() {
   return (
     <div className="flex flex-col h-screen bg-[#1e1e1e] text-white">
       {/* Top Navigation Bar */}
-      <div className="bg-[#252525] border-b border-[#2c2c2c] px-3 py-2 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="bg-[#252525] border-b border-[#2c2c2c] px-2 sm:px-3 py-2 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
-            onClick={() => setIconSidebarOpen((prev) => !prev)}
+            onClick={() => {
+              if (window.innerWidth < 768) {
+                setMobileSidebarOpen((prev) => !prev)
+              } else {
+                setIconSidebarOpen((prev) => !prev)
+              }
+            }}
             title={iconSidebarOpen ? "Hide sidebar" : "Show sidebar"}
             className={`p-1 rounded transition-colors ${iconSidebarOpen ? "bg-[#2c2c2c]" : "hover:bg-[#2c2c2c]"}`}
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
-          <div className="flex items-center gap-4 ml-4 text-sm">
+          <div className="hidden sm:flex items-center gap-4 ml-4 text-sm">
             <button className="text-gray-300 hover:text-white">Utkarsh's</button>
             <button className="text-gray-300 hover:text-white">Portfolio</button>
           </div>
         </div>
 
-        <div className="flex-1 max-w-md mx-8">
-          <div className="relative">
+        <div className="hidden md:flex flex-1 max-w-md mx-8">
+          <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" />
             <input
               type="text"
@@ -322,25 +330,23 @@ function hello() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* LinkedIn */}
+        <div className="flex items-center gap-1 sm:gap-2">
           <button
             onClick={() => window.open("https://www.linkedin.com/in/utkarsh-gupta-5aa661261", "_blank")}
             title="LinkedIn"
-            className="p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
+            className="p-1 sm:p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 23.98h4.56V7.98H.22v16zM8.48 7.98h4.37v2.18h.06c.61-1.15 2.1-2.37 4.33-2.37 4.63 0 5.48 3.05 5.48 7.01v9.18h-4.56v-8.14c0-1.94-.03-4.44-2.71-4.44-2.71 0-3.13 2.12-3.13 4.3v8.28H8.48v-16z" />
             </svg>
           </button>
 
-          {/* GitHub */}
           <button
             onClick={() => window.open("https://github.com/utkarshgupta2804", "_blank")}
             title="GitHub"
-            className="p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
+            className="p-1 sm:p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 .5C5.73.5.5 5.74.5 12.04c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.38-3.87-1.38-.53-1.36-1.29-1.72-1.29-1.72-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.56-.3-5.26-1.29-5.26-5.74 0-1.27.45-2.3 1.19-3.11-.12-.3-.52-1.52.11-3.17 0 0 .97-.31 3.18 1.19a11.05 11.05 0 0 1 5.8 0c2.2-1.5 3.17-1.19 3.17-1.19.63 1.65.23 2.87.11 3.17.74.81 1.18 1.84 1.18 3.11 0 4.46-2.7 5.44-5.28 5.73.41.36.78 1.07.78 2.16v3.2c0 .31.2.66.79.55A11.54 11.54 0 0 0 23.5 12.04C23.5 5.74 18.27.5 12 .5z" />
             </svg>
           </button>
@@ -352,9 +358,9 @@ function hello() {
               )
             }
             title="Email Utkarsh"
-            className="p-1.5 hover:bg-[#2c2c2c] rounded"
+            className="p-1 sm:p-1.5 hover:bg-[#2c2c2c] rounded"
           >
-            <div className="w-6 h-6 rounded-full overflow-hidden border border-[#2c2c2c]">
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden border border-[#2c2c2c]">
               <Image
                 src="/me_better.png"
                 alt="Utkarsh"
@@ -368,47 +374,57 @@ function hello() {
       </div>
 
       <div className="flex flex-1 overflow-hidden">
+        {mobileSidebarOpen && (
+          <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setMobileSidebarOpen(false)} />
+        )}
+
         {/* Left Icon Sidebar */}
         {iconSidebarOpen && (
-          <div className="bg-[#252525] border-r border-[#2c2c2c] flex flex-col items-center py-4 px-2 gap-4">
+          <div
+            className={`
+            bg-[#252525] border-r border-[#2c2c2c] flex flex-col items-center py-3 sm:py-4 px-1 sm:px-2 gap-3 sm:gap-4
+            md:relative md:translate-x-0
+            ${mobileSidebarOpen ? "fixed left-0 top-[53px] bottom-0 z-50 translate-x-0" : "hidden md:flex"}
+          `}
+          >
             <button
               onClick={() => setSidePanel((prev) => (prev === "collections" ? null : "collections"))}
-              className={`p-2 rounded border-l-2 ${
+              className={`p-1.5 sm:p-2 rounded border-l-2 ${
                 sidePanel === "collections" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
               }`}
               title="Collections"
             >
-              <FolderOpen className="w-5 h-5" />
+              <FolderOpen className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <button
               onClick={() => setSidePanel((prev) => (prev === "guide" ? null : "guide"))}
-              className={`p-2 rounded border-l-2 ${
+              className={`p-1.5 sm:p-2 rounded border-l-2 ${
                 sidePanel === "guide" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
               }`}
               title="Guide"
             >
-              <Settings className="w-5 h-5" />
+              <Settings className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <button
               onClick={() => setSidePanel((prev) => (prev === "projects" ? null : "projects"))}
-              className={`p-2 rounded border-l-2 ${
+              className={`p-1.5 sm:p-2 rounded border-l-2 ${
                 sidePanel === "projects" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
               }`}
               title="Projects & Blogs"
             >
-              <Clock className="w-5 h-5" />
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <button
               onClick={() => setSidePanel((prev) => (prev === "opensource" ? null : "opensource"))}
-              className={`p-2 rounded border-l-2 ${
+              className={`p-1.5 sm:p-2 rounded border-l-2 ${
                 sidePanel === "opensource" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
               }`}
               title="Open Source"
             >
-              <GitBranch className="w-5 h-5" />
+              <GitBranch className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
             <div className="flex-1"></div>
           </div>
@@ -416,7 +432,13 @@ function hello() {
 
         {/* Collections Sidebar */}
         {iconSidebarOpen && sidePanel && (
-          <div className="w-72 bg-[#1e1e1e] border-r border-[#2c2c2c] flex flex-col">
+          <div
+            className={`
+            w-60 sm:w-72 bg-[#1e1e1e] border-r border-[#2c2c2c] flex flex-col
+            md:relative md:translate-x-0
+            ${mobileSidebarOpen ? "fixed left-[49px] top-[53px] bottom-0 z-50 translate-x-0" : "hidden md:flex"}
+          `}
+          >
             {/* Header */}
             <div className="p-4 border-b border-[#2c2c2c]">
               <h2 className="text-sm font-semibold text-gray-300">
@@ -709,31 +731,31 @@ function hello() {
         <div id="main-split-container" className="flex-1 flex flex-col overflow-hidden">
           <div className="flex flex-col overflow-hidden" style={{ height: `${splitRatio}%` }}>
             {/* Tabs Bar */}
-            <div className="bg-[#252525] border-b border-[#2c2c2c] flex items-center gap-2 px-2">
-              <button className="flex items-center gap-2 px-3 py-2 bg-[#1e1e1e] border-b-2 border-[#ff6c37] text-sm">
+            <div className="bg-[#252525] border-b border-[#2c2c2c] flex items-center gap-1 sm:gap-2 px-1 sm:px-2 overflow-x-auto">
+              <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-[#1e1e1e] border-b-2 border-[#ff6c37] text-xs sm:text-sm whitespace-nowrap">
                 <div className="w-2 h-2 bg-[#49cc90] rounded-full"></div>
                 <span className="text-gray-300">{selectedMethod}</span>
-                <span className="text-gray-400">{urlInput}</span>
+                <span className="text-gray-400 hidden sm:inline">{urlInput}</span>
               </button>
             </div>
 
             {/* Request URL Section */}
-            <div className="bg-[#1e1e1e] border-b border-[#2c2c2c] p-4">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex items-center gap-2 flex-1 bg-[#252525] rounded border border-[#2c2c2c]">
+            <div className="bg-[#1e1e1e] border-b border-[#2c2c2c] p-2 sm:p-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mb-3 sm:mb-4">
+                <div className="flex items-center gap-1 sm:gap-2 flex-1 bg-[#252525] rounded border border-[#2c2c2c]">
                   <div className="relative">
                     <button
                       onClick={() => setMethodDropdownOpen(!methodDropdownOpen)}
-                      className="flex items-center gap-2 bg-transparent px-3 py-2.5 font-semibold text-sm focus:outline-none border-r border-[#2c2c2c] hover:bg-[#2c2c2c]"
+                      className="flex items-center gap-1 sm:gap-2 bg-transparent px-2 sm:px-3 py-2 sm:py-2.5 font-semibold text-xs sm:text-sm focus:outline-none border-r border-[#2c2c2c] hover:bg-[#2c2c2c]"
                     >
                       <span className={httpMethods.find((m) => m.name === selectedMethod)?.color}>
                         {selectedMethod}
                       </span>
-                      <ChevronDown className="w-4 h-4 text-gray-400" />
+                      <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
                     </button>
 
                     {methodDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-1 bg-[#252525] border border-[#2c2c2c] rounded shadow-lg z-50 min-w-[180px]">
+                      <div className="absolute top-full left-0 mt-1 bg-[#252525] border border-[#2c2c2c] rounded shadow-lg z-50 min-w-[120px] sm:min-w-[180px]">
                         {httpMethods.map((method) => (
                           <button
                             key={method.name}
@@ -741,9 +763,9 @@ function hello() {
                               setSelectedMethod(method.name)
                               setMethodDropdownOpen(false)
                             }}
-                            className="w-full text-left px-4 py-2 hover:bg-[#2c2c2c] transition-colors"
+                            className="w-full text-left px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-[#2c2c2c] transition-colors"
                           >
-                            <span className={`font-semibold text-sm ${method.color}`}>{method.name}</span>
+                            <span className={`font-semibold text-xs sm:text-sm ${method.color}`}>{method.name}</span>
                           </button>
                         ))}
                       </div>
@@ -753,32 +775,34 @@ function hello() {
                     type="text"
                     value={`http://localhost:8080/api${urlInput}`}
                     onChange={handleUrlChange}
-                    className="flex-1 bg-transparent px-3 py-2.5 outline-none text-sm text-gray-300 focus:bg-[#2c2c2c]"
+                    className="flex-1 bg-transparent px-2 sm:px-3 py-2 sm:py-2.5 outline-none text-xs sm:text-sm text-gray-300 focus:bg-[#2c2c2c] min-w-0"
                     placeholder="Enter request URL"
                   />
                 </div>
-                <Button
-                  onClick={handleSendRequest}
-                  disabled={loading}
-                  className="bg-[#ff6c37] hover:bg-[#ff7e4f] text-white px-6 py-2.5 h-auto font-semibold"
-                >
-                  {loading ? "Sending..." : "Send"}
-                </Button>
-                <button
-                  onClick={() => window.open("/Utkarsh_Resume.pdf", "_blank")}
-                  className="p-2 hover:bg-[#252525] rounded"
-                >
-                  <Save className="w-5 h-5 text-gray-400" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <Button
+                    onClick={handleSendRequest}
+                    disabled={loading}
+                    className="flex-1 sm:flex-none bg-[#ff6c37] hover:bg-[#ff7e4f] text-white px-4 sm:px-6 py-2 sm:py-2.5 h-auto font-semibold text-xs sm:text-sm"
+                  >
+                    {loading ? "Sending..." : "Send"}
+                  </Button>
+                  <button
+                    onClick={() => window.open("/Utkarsh_Resume.pdf", "_blank")}
+                    className="p-2 hover:bg-[#252525] rounded"
+                  >
+                    <Save className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
+                  </button>
+                </div>
               </div>
 
               {/* Updated Request Tabs Section */}
-              <div className="flex items-center gap-1 px-4 border-b border-[#2c2c2c]">
+              <div className="flex items-center gap-1 px-2 sm:px-4 border-b border-[#2c2c2c] overflow-x-auto">
                 {["Docs", "Body"].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`px-4 py-2.5 text-sm transition-colors border-b-2 ${
+                    className={`px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors border-b-2 whitespace-nowrap ${
                       activeTab === tab
                         ? "text-white border-[#ff6c37]"
                         : "text-gray-400 hover:text-gray-300 border-transparent"
@@ -907,33 +931,37 @@ function hello() {
               )}
             </div>
           </div>
-          <div onMouseDown={onMouseDown} className="h-1 bg-[#2c2c2c] cursor-row-resize hover:bg-[#ff6c37]" />
+          <div
+            onMouseDown={onMouseDown}
+            className="hidden sm:block h-1 bg-[#2c2c2c] cursor-row-resize hover:bg-[#ff6c37]"
+          />
+
           {/* Response Section */}
           <div className="flex flex-col overflow-hidden" style={{ height: `${100 - splitRatio}%` }}>
-            <div className="bg-[#252525] border-b border-[#2c2c2c] px-4 py-2 flex items-center justify-between ">
-              <div className="flex items-center gap-6 text-sm pl-2">
+            <div className="bg-[#252525] border-b border-[#2c2c2c] px-2 sm:px-4 py-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+              <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm pl-2">
                 <button className="text-gray-200 pb-1 border-b-2 border-[#ff6c37] flex items-center gap-2 ">
                   Response
                 </button>
               </div>
               {statusCode && (
-                <div className="flex items-center gap-4 text-xs">
+                <div className="flex items-center gap-2 sm:gap-4 text-[10px] sm:text-xs flex-wrap">
                   <span className={`font-semibold ${statusCode === 200 ? "text-[#49cc90]" : "text-red-500"}`}>
                     Status: {statusCode} {statusCode === 200 ? "OK" : "Error"}
                   </span>
                   <span className="text-gray-400">Time: {responseTime !== null ? `${responseTime} ms` : "-"}</span>
-                  <span className="text-gray-400">
+                  <span className="text-gray-400 hidden sm:inline">
                     Size: {response ? `${(JSON.stringify(response).length / 1024).toFixed(2)} KB` : "0 KB"}
                   </span>
                 </div>
               )}
-              <div className="flex items-center gap-4 text-xs text-gray-500">
+              <div className="flex items-center gap-2 sm:gap-4 text-xs text-gray-500">
                 <button
                   onClick={() => window.open("https://medium.com/@utkarsh2804gupta", "_blank")}
                   title="Medium"
-                  className="p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
+                  className="p-1 sm:p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M13.54 12a6.46 6.46 0 1 1-12.92 0 6.46 6.46 0 0 1 12.92 0Zm7.46 0c0 3.34-1.6 6.05-3.57 6.05-1.97 0-3.57-2.71-3.57-6.05 0-3.34 1.6-6.05 3.57-6.05 1.97 0 3.57 2.71 3.57 6.05ZM24 12c0 2.99-.57 5.42-1.27 5.42-.7 0-1.27-2.43-1.27-5.42 0-2.99.57-5.42 1.27-5.42.7 0 1.27 2.43 1.27 5.42Z" />
                   </svg>
                 </button>
@@ -941,9 +969,9 @@ function hello() {
                 <button
                   onClick={() => window.open("https://x.com/utkarsh_2804", "_blank")}
                   title="X (Twitter)"
-                  className="p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
+                  className="p-1 sm:p-1.5 hover:bg-[#2c2c2c] rounded text-gray-400 hover:text-gray-200 transition-colors"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2H21.6l-7.37 8.42L23 22h-6.8l-5.33-6.97L4.8 22H1.4l7.9-9.04L18.24 2Zm-1.2 18h1.86L7.02 4H5.08l11.96 16Z" />
                   </svg>
                 </button>
@@ -952,10 +980,10 @@ function hello() {
             {/* Response Body */}
             <div className="flex-1 overflow-auto postman-scrollbar">
               {response ? (
-                <div className="p-4">
-                  <div className="bg-[#252525] rounded border border-[#2c2c2c] p-4">
+                <div className="p-2 sm:p-4">
+                  <div className="bg-[#252525] rounded border border-[#2c2c2c] p-2 sm:p-4">
                     <pre
-                      className="text-xs font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-hidden"
+                      className="text-[10px] sm:text-xs font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-hidden"
                       dangerouslySetInnerHTML={{
                         __html: highlightJSON(response),
                       }}
@@ -963,11 +991,11 @@ function hello() {
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center h-full text-gray-500">
-                  <div className="relative w-48 h-48 mb-4 opacity-50">
+                <div className="flex flex-col items-center justify-center h-full text-gray-500 p-4">
+                  <div className="relative w-32 h-32 sm:w-48 sm:h-48 mb-4 opacity-50">
                     <Image src="/postman-astronaut.jpg" alt="Postman astronaut" fill className="object-contain" />
                   </div>
-                  <p className="text-sm text-gray-400">Click Send to get a response</p>
+                  <p className="text-xs sm:text-sm text-gray-400">Click Send to get a response</p>
                 </div>
               )}
             </div>
@@ -975,7 +1003,7 @@ function hello() {
         </div>
       </div>
       {/* Bottom Toolbar */}
-      <div className="bg-[#252525] border-t border-[#2c2c2c] px-3 py-1.5 flex items-center justify-between text-xs">
+      <div className="hidden lg:flex bg-[#252525] border-t border-[#2c2c2c] px-3 py-1.5 flex items-center justify-between text-xs">
         <div className="flex items-center gap-4">
           <button className="flex items-center gap-1.5 text-gray-400 hover:text-gray-200">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1006,7 +1034,7 @@ function hello() {
             Start Proxy
           </button>
           <button className="flex items-center gap-1.5 text-gray-400 hover:text-gray-200">
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M21.598 11.064a1.006 1.006 0 0 0-.854-.172A2.938 2.938 0 0 1 20 11c-1.654 0-3-1.346-3.003-2.938.005-.034.016-.134.017-.168a.998.998 0 0 0-1.254-1.006A3.002 3.002 0 0 1 15 7c-1.654 0-3-1.346-3-3 0-.217.031-.444.099-.716a1 1 0 0 0-1.067-1.236A9.956 9.956 0 0 0 2 12c0 5.514 4.486 10 10 10s10-4.486 10-10c0-.049-.003-.097-.007-.16a1.004 1.004 0 0 0-.395-.776zM8.5 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-2 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm2.5-6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
             </svg>
             Cookies
