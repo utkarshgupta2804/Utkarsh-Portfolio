@@ -145,7 +145,7 @@ pre::-webkit-scrollbar-thumb:hover {
 
 /* Postman-like camouflaged scrollbar */
 .postman-scrollbar {
-  scrollbar-width: thin;                /* Firefox */
+  scrollbar-width: thin; /* Firefox */
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 

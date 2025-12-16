@@ -135,7 +135,7 @@ export default function PortfolioPostman() {
       const enabledHeaders = headers.filter((h) => h.enabled && h.key)
       enabledHeaders.forEach((h) => {
         if (options.headers) {
-          ; (options.headers as Record<string, string>)[h.key] = h.value
+          ;(options.headers as Record<string, string>)[h.key] = h.value
         }
       })
 
@@ -156,9 +156,9 @@ export default function PortfolioPostman() {
         } else if (bodyType === "raw" && bodyContent.trim()) {
           // Only send body if raw is selected and has content
           if (rawDataType === "JSON") {
-            ; (options.headers as Record<string, string>)["Content-Type"] = "application/json"
+            ;(options.headers as Record<string, string>)["Content-Type"] = "application/json"
           } else {
-            ; (options.headers as Record<string, string>)["Content-Type"] = "text/plain"
+            ;(options.headers as Record<string, string>)["Content-Type"] = "text/plain"
           }
           options.body = bodyContent
         }
@@ -373,8 +373,9 @@ function hello() {
           <div className="bg-[#252525] border-r border-[#2c2c2c] flex flex-col items-center py-4 px-2 gap-4">
             <button
               onClick={() => setSidePanel((prev) => (prev === "collections" ? null : "collections"))}
-              className={`p-2 rounded border-l-2 ${sidePanel === "collections" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
-                }`}
+              className={`p-2 rounded border-l-2 ${
+                sidePanel === "collections" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
+              }`}
               title="Collections"
             >
               <FolderOpen className="w-5 h-5" />
@@ -382,8 +383,9 @@ function hello() {
 
             <button
               onClick={() => setSidePanel((prev) => (prev === "guide" ? null : "guide"))}
-              className={`p-2 rounded border-l-2 ${sidePanel === "guide" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
-                }`}
+              className={`p-2 rounded border-l-2 ${
+                sidePanel === "guide" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
+              }`}
               title="Guide"
             >
               <Settings className="w-5 h-5" />
@@ -391,8 +393,9 @@ function hello() {
 
             <button
               onClick={() => setSidePanel((prev) => (prev === "projects" ? null : "projects"))}
-              className={`p-2 rounded border-l-2 ${sidePanel === "projects" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
-                }`}
+              className={`p-2 rounded border-l-2 ${
+                sidePanel === "projects" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
+              }`}
               title="Projects & Blogs"
             >
               <Clock className="w-5 h-5" />
@@ -400,8 +403,9 @@ function hello() {
 
             <button
               onClick={() => setSidePanel((prev) => (prev === "opensource" ? null : "opensource"))}
-              className={`p-2 rounded border-l-2 ${sidePanel === "opensource" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
-                }`}
+              className={`p-2 rounded border-l-2 ${
+                sidePanel === "opensource" ? "bg-[#2c2c2c] border-[#ff6c37]" : "hover:bg-[#2c2c2c] border-transparent"
+              }`}
               title="Open Source"
             >
               <GitBranch className="w-5 h-5" />
@@ -453,10 +457,11 @@ function hello() {
                           <button
                             key={routeKey}
                             onClick={() => handleRouteSelect(route.name, route.method)}
-                            className={`w-full text-left px-3 py-2 rounded text-sm transition-colors ${activeRoute === route.name && selectedMethod === route.method
-                              ? "bg-[#2c2c2c] border-l-2 border-[#ff6c37]"
-                              : "text-gray-400 hover:bg-[#252525]"
-                              }`}
+                            className={`w-full text-left px-3 py-2 rounded text-sm transition-colors ${
+                              activeRoute === route.name && selectedMethod === route.method
+                                ? "bg-[#2c2c2c] border-l-2 border-[#ff6c37]"
+                                : "text-gray-400 hover:bg-[#252525]"
+                            }`}
                           >
                             <div className="flex items-center gap-2">
                               <span className={`text-xs font-semibold ${methodColor}`}>{route.method}</span>
@@ -485,10 +490,9 @@ function hello() {
                   <p className="text-gray-300 font-semibold">Welcome 👋</p>
 
                   <p>
-                    This is my{" "}
-                    <span className="text-gray-300 font-medium">Postman-style portfolio</span>,
-                    designed to demonstrate my backend, API design, and frontend interaction
-                    skills in a familiar developer interface.
+                    This is my <span className="text-gray-300 font-medium">Postman-style portfolio</span>, designed to
+                    demonstrate my backend, API design, and frontend interaction skills in a familiar developer
+                    interface.
                   </p>
 
                   <p>
@@ -500,23 +504,20 @@ function hello() {
                     <li>Select APIs directly from the left collections panel</li>
                     <li>Or manually type endpoints in the request URL bar</li>
                     <li>
-                      The <span className="text-gray-300 font-medium">save icon</span> opens my
-                      resume
+                      The <span className="text-gray-300 font-medium">save icon</span> opens my resume
                     </li>
                   </ul>
 
                   <div className="border-t border-[#2c2c2c] pt-3 space-y-2">
                     <p>
-                      In the <span className="text-gray-300 font-medium">Response</span> section,
-                      you can access my{" "}
+                      In the <span className="text-gray-300 font-medium">Response</span> section, you can access my{" "}
                       <span className="text-gray-300 font-medium">X (Twitter)</span> and{" "}
                       <span className="text-gray-300 font-medium">Medium</span> profiles.
                     </p>
 
                     <p>
-                      Clicking on my{" "}
-                      <span className="text-gray-300 font-medium">profile photo</span> will
-                      directly open your email client to contact me.
+                      Clicking on my <span className="text-gray-300 font-medium">profile photo</span> will directly open
+                      your email client to contact me.
                     </p>
                   </div>
                 </div>
@@ -650,9 +651,7 @@ function hello() {
                         <div className="text-sm font-semibold text-gray-200 mb-1">
                           Scaling QR Generation: Lessons from Building a Dynamic Batch System
                         </div>
-                        <div className="text-xs text-gray-500">
-                          Medium · System Design · Backend Engineering
-                        </div>
+                        <div className="text-xs text-gray-500">Medium · System Design · Backend Engineering</div>
                       </a>
                     </div>
                   </div>
@@ -779,10 +778,11 @@ function hello() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`px-4 py-2.5 text-sm transition-colors border-b-2 ${activeTab === tab
-                      ? "text-white border-[#ff6c37]"
-                      : "text-gray-400 hover:text-gray-300 border-transparent"
-                      }`}
+                    className={`px-4 py-2.5 text-sm transition-colors border-b-2 ${
+                      activeTab === tab
+                        ? "text-white border-[#ff6c37]"
+                        : "text-gray-400 hover:text-gray-300 border-transparent"
+                    }`}
                   >
                     {tab}
                     {tab === "Headers" && " (9)"}
@@ -1027,6 +1027,6 @@ function hello() {
           </button>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
